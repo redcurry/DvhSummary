@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using EclipsePlugInRunner.Scripting;
-using VMS.TPS;
 
 namespace DvhSummary.Runner
 {
@@ -8,7 +7,7 @@ namespace DvhSummary.Runner
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            ScriptRunner.Run(new Script());
+            ScriptRunner.Run(new VMS.TPS.Script());
         }
     }
 }

@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Threading;
+using DvhSummary.Script;
 using VMS.TPS.Common.Model.API;
 
 namespace VMS.TPS
@@ -28,7 +32,23 @@ namespace VMS.TPS
             IEnumerable<PlanSum> planSumsInScope,
             Window mainWindow)
         {
-            // Your main code now goes here
+            var mainViewModel = new MainViewModel();
+            mainViewModel.PlanSetup = planSetup;
+
+            try
+            {
+                Mouse.OverrideCursor = Cursors.Wait;
+                mainViewModel.CalculateDvhSummary();
+            }
+            finally
+            {
+                Mouse.OverrideCursor = null;
+            }
+
+            var mainView = new MainView();
+            mainView.ViewModel = mainViewModel;
+
+            mainWindow.Content = mainView;
         }
     }
 }

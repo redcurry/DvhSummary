@@ -35,15 +35,9 @@ namespace VMS.TPS
             var mainViewModel = new MainViewModel();
             mainViewModel.PlanSetup = planSetup;
 
-            try
-            {
-                Mouse.OverrideCursor = Cursors.Wait;
-                mainViewModel.CalculateDvhSummary();
-            }
-            finally
-            {
-                Mouse.OverrideCursor = null;
-            }
+            Mouse.OverrideCursor = Cursors.Wait;
+            mainViewModel.CalculateDvhSummary();
+            Mouse.OverrideCursor = null;
 
             var mainView = new MainView();
             mainView.ViewModel = mainViewModel;
